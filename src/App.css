@@ -8,10 +8,11 @@
 body {
   animation: bgAnimation infinite 20s;
 }
+
 .todo-app {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   width: 520px;
   min-height: 600px;
   background: #161a2b;
@@ -47,7 +48,7 @@ h1 {
 }
 
 .todo-input::placeholder {
-  color: #e2e2e2;
+  color: #b1b1b1;
 }
 
 .todo-button {
@@ -58,11 +59,17 @@ h1 {
   outline: none;
   background: linear-gradient(
     90deg,
-    rgba(93, 12, 255, 1) 0%,
+    rgb(85, 0, 255) 0%,
     rgba(155, 0, 250, 1) 100%
   );
   color: #fff;
   text-transform: capitalize;
+}
+
+.todo-button:hover {
+  color: #ccc;
+  box-shadow: 0px 0px 10px blue;
+  transition: all .5s ease;
 }
 
 .todo-input.edit {
@@ -76,6 +83,12 @@ h1 {
     rgba(17, 122, 255, 1) 100%
   );
   padding: 16px 22px;
+}
+
+.todo-button.edit:hover {
+  color: #ccc;
+  box-shadow: 0px 0px 10px rgb(0, 195, 255);
+  transition: all .5s ease;
 }
 
 .todo-container {
@@ -92,8 +105,8 @@ h1 {
   color: #fff;
   background: linear-gradient(
     90deg,
-    rgba(255, 118, 20, 1) 0%,
-    rgba(255, 84, 17, 1) 100%
+    rgb(0, 230, 103) 0%,
+    rgb(0, 187, 84) 100%
   );
 
   padding: 16px;
@@ -125,6 +138,10 @@ h1 {
   );
 }
 
+.todo-row-text {
+  cursor: pointer;
+}
+
 .icons {
   display: flex;
   align-items: center;
@@ -137,19 +154,76 @@ h1 {
   color: #fff;
 }
 
+.delete-icon:hover {
+  animation: iconDeleteAnimation 1s infinite;
+}
+
 .edit-icon {
   color: #fff;
 }
 
+.edit-icon:hover {
+  animation: iconEditAnimation infinite 1s;
+}
+
+/*ANIMATIONS*/
 @keyframes bgAnimation {
   0%{
     background-color: #149fff;
   }
   50% {
-    background-color: rgb(0, 92, 158);
+    background-color: rgb(0, 111, 190);
   }
 
   100%{
     background-color: #149fff;
+  }
+}
+
+@keyframes iconDeleteAnimation{
+  0%{
+    color: #fff;
+  }
+  50%{
+    color: rgb(255, 175, 175);
+  }
+  100%{
+    color: #fff;
+  }
+}
+
+@keyframes iconEditAnimation{
+  0%{
+    color: #fff;
+  }
+  50%{
+    color: rgb(184, 184, 184);
+  }
+  100%{
+    color: #fff;
+  }
+}
+
+@keyframes bgResponsiveAnimation {
+  0%{
+    background: #161a2b;
+  }
+  100%{
+    background: #161a2b;
+  }
+}
+
+/*RESPONSIVE*/
+@media (max-width: 600px) {
+  *{
+    font-size: 26px;
+  }
+
+  body {
+    animation: bgResponsiveAnimation infinite 1s;
+  }
+
+  .delete-icon {
+    margin-right: 15px;
   }
 }
